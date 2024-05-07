@@ -113,6 +113,15 @@
             activity: "",
           };
         },
+        mounted() {
+          if (localStorage.getItem("todoList")) {
+            try {
+              this.todoList = JSON.parse(localStorage.getItem("todoList"));
+            } catch (e) {
+              localStorage.removeItem("todoList");
+            }
+          }
+        },
         methods: {
           addTodo() {
             let newItem = {
@@ -123,13 +132,20 @@
             };
 
             this.todoList.push(newItem);
+            this.saveTodo();
           },
           deleteTodo(idx) {
             this.todoList.splice(idx, 1);
+            this.saveTodo();
           },
           doneTodo(idx) {
             console.log(this.todoList[idx]);
             this.todoList[idx].done = true;
+            this.saveTodo();
+          },
+          saveTodo() {
+            const parsed = JSON.stringify(this.todoList);
+            localStorage.setItem("todoList", parsed);
           },
         },
       }).mount("#app");
