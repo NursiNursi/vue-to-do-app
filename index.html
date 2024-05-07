@@ -136,6 +136,10 @@
 
             this.todoList.push(newItem);
             this.saveTodo();
+
+            this.activity = "";
+            this.startTime = "";
+            this.endTime = "";
           },
           deleteTodo(idx) {
             this.todoList.splice(idx, 1);
