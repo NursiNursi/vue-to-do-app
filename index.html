@@ -67,7 +67,10 @@
               class="p-3"
               style="border-bottom: solid 1px #ddd"
             >
-              <button class="btn btn-outline-danger me-3" @click="deleteTodo">
+              <button
+                class="btn btn-outline-danger me-3"
+                @click="deleteTodo(idx)"
+              >
                 Delete
               </button>
               <button class="btn btn-success me-3" @click="doneTodo(idx)">
